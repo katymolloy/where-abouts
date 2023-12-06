@@ -1,15 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Alert, TextInput, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
-import { registerRootComponent } from 'expo';
 
-import {db, auth, firestore} from '../firebaseConfig'
-import { signInWithEmailAndPassword, signOut } from '/firebase/auth';
-import { createUserWithEmailAndPassword } from '/firebase/auth';
-import { onValue } from '/firebase/database';
-import { onSnapshot } from '/firebase/firestore';
-import { ref, set } from '/firebase/database';
-import { doc, setDoc } from '/firebase/firestore';
+import { Text, View, Alert, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+
+import { db, auth } from '../firebaseConfig'
+import { signInWithEmailAndPassword, signOut } from '../node_modules/firebase/auth';
+import { onValue } from '../node_modules/firebase/database';
+import { ref, set } from '../node_modules/firebase/database';
 
 import { styles } from '../styles/styles';
 
@@ -17,13 +13,13 @@ import { styles } from '../styles/styles';
 const SignInScreen = () => {
 
     // Setting the hooks
-    [signInEmail, setSignInEmail] = useState('');
-    [signInPassword, setSigninPassword] = useState('');
+    const [signInEmail, setSignInEmail] = useState('');
+    const [signInPassword, setSignInPassword] = useState('');
 
 
     // Logging In With Firebase
     signInWithFirebase = () => {
-        
+
         if (signInEmail.length < 4) {
             Alert.alert('Please enter a valid email address');
             return;
@@ -34,7 +30,7 @@ const SignInScreen = () => {
             return;
         }
 
-        signInWithEmailAndPassword(auth, signInEmail, signInPassword).then(function (_firebaseUser) {
+        signInWithEmailAndPassword(auth, signInEmail, signInPassword).then(() => {
             Alert.alert('You are now logged in!');
         }).catch(function (err) {
             var errorCode = err.code;
@@ -51,14 +47,14 @@ const SignInScreen = () => {
 
 
     return (
-        <View style={styles.form}>
+        <View style={styles.container}>
             <View>
-                <Text style = {styles.header}>SIGN IN</Text>
+                <Text style={styles.header}>SIGN IN</Text>
 
                 <Text>Email Address</Text>
-                <TextInput 
+                <TextInput
                     style={styles.textInput}
-                    onChangeText={ (value) => setSignInEmail(value) }
+                    onChangeText={(value) => setSignInEmail(value)}
                     autoCapitalize="none"
                     autoCorrect={false}
                     autoCompleteType="email"
@@ -67,19 +63,18 @@ const SignInScreen = () => {
                 />
 
                 <Text>Password</Text>
-                <TextInput 
+                <TextInput
                     style={styles.textInput}
-                    onChangeText={ (value) => setSigninPassword(value) }
+                    onChangeText={(value) => setSignInPassword(value)}
                     autoCapitalize="none"
                     autoCorrect={false}
-                    autoCompleteType="password"
-                    keyboardType="visible-password"
+                    autoCompleteType="password" 
+                    secureTextEntry={true}
                     placeholder="password"
-                    secureTextEntry = {false}
                 />
 
-                <TouchableOpacity style = {styles.button} title = "SIGN IN" onPress = {signInWithFirebase}>
-                    <Text style = {styles.buttonText}>SIGN IN</Text>
+                <TouchableOpacity style={styles.button} title="SIGN IN" onPress={signInWithFirebase}>
+                    <Text style={styles.buttonText}>SIGN IN</Text>
                 </TouchableOpacity>
             </View>
         </View>

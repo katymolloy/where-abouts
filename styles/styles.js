@@ -8,29 +8,30 @@ export const styles = StyleSheet.create({
     },
 
     textInput : {
-        justifyContent : 'center',
-        alignItems : 'center',
+        // justifyContent : 'center',
+        // alignItems : 'center',
         borderColor : '#000000',
         borderWidth : 1,
         borderRadius : 10,
-        width : 100,
-        height : 100,
+        width : 222,
+        height : 45,
+        padding: 10
     },
 
     buttonContainer: {
-        paddingVertical : 40,
+        // paddingVertical : 40,
         justifyContent : 'center',
-        alignItems : 'center',
+        alignContent : 'center',
         width : '100%',
     },
 
     button: {
-        alignContent : 'center',
-        alignItems : 'center',
+        // alignContent : 'center',
+        alignSelf : 'center',
         margin : 5,
         padding : 15,
-        color : '#FFF',
-        backGroundColor : 'blue',
+        // color : 'black',
+        backgroundColor : 'blue',
         borderRadius : 10,
         boxSizing : 'border-box',
         border : 'none',
@@ -43,5 +44,16 @@ export const styles = StyleSheet.create({
         letterSpacing : 0.20,
         color : '#FFF',
     },
+    header:{
+        fontSize: 30,
+        fontWeight: '500',
+
+    },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
 
 });
