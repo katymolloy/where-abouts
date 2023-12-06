@@ -13,16 +13,19 @@ import { ref, set } from '../node_modules/firebase/database';
 import { styles } from '../styles/styles';
 
 
-const RegisterScreen = () => {
+const RegisterScreen = ({navigation}) => {
 
     // Setting the hooks 
     const [registrationEmail, setRegistrationEmail] = useState('');
-    // const [registrationName, setRegistrationName] = useState('')
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [registrationPassword, setRegistrationPassword] = useState('');
-    // const [databaseData, setDatabaseData] = useState('');
 
+
+    const registerHandler = () =>{
+        registerWithFirebase();
+        navigation.navigate('Home')
+    }
 
     // Registering with Firebase
     const registerWithFirebase = () => {
@@ -41,6 +44,9 @@ const RegisterScreen = () => {
             Alert.alert('User has been registered!');
             saveDataWithFirebase(firstName, lastName, registrationEmail)
 
+            // clearing the input fields
+            setFirstName('');
+            setLastName('')
             setRegistrationEmail('');
             setRegistrationPassword('');
         }).catch(function (err) {
@@ -104,6 +110,7 @@ const RegisterScreen = () => {
                     autoCorrect={false}
                     placeholder='last name'
                 />
+               
 
                 <Text>Email Address</Text>
                 <TextInput
@@ -129,7 +136,7 @@ const RegisterScreen = () => {
                 />
 
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button} title="CREATE AN ACCOUNT" onPress={registerWithFirebase}>
+                    <TouchableOpacity style={styles.button} title="CREATE AN ACCOUNT" onPress={registerHandler}>
                         <Text style={styles.buttonText}>CREATE AN ACCOUNT</Text>
                     </TouchableOpacity>
                 </View>

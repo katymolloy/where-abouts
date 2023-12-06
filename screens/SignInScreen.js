@@ -17,9 +17,17 @@ const SignInScreen = ({ navigation }) => {
     const [signInEmail, setSignInEmail] = useState('');
     const [signInPassword, setSignInPassword] = useState('');
 
+    // handler function for sign in
     signInHandler = () => {
+        // user is signed in with firebase
         signInWithFirebase()
+
+        // text fields are cleared
+        setSignInEmail('')
+        setSignInPassword('')
         setIsLoggedIn(true)
+
+        // users are navigated to the map screen
         navigation.navigate('Map')
     }
 
@@ -28,8 +36,6 @@ const SignInScreen = ({ navigation }) => {
 
         if (signInEmail.length < 4) {
             Alert.alert('Please enter a valid email address');
-
-
         }
 
         if (signInPassword.length < 4) {
