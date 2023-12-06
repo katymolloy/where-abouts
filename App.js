@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Home from './screens/home';
+import Home from './screens/homeScreen';
 import SignInScreen from './screens/SignInScreen';
 import RegisterScreen from './screens/RegisterScreen';
 

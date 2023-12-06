@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Alert, TextInput, TouchableOpacity } from 'reac
 import React, { useState } from 'react';
 import { registerRootComponent } from 'expo';
 
-import {db, auth, firestore} from './firebaseConfig';
+import {db, auth, firestore} from '../firebaseConfig';
 import { signInWithEmailAndPassword, signOut } from '/firebase/auth';
 import { createUserWithEmailAndPassword } from '/firebase/auth';
 import { onValue } from '/firebase/database';
