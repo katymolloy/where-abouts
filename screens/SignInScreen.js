@@ -47,10 +47,10 @@ const SignInScreen = () => {
 
 
     return (
-        <View style={styles.container}>
-            <View>
-                <Text style={styles.header}>SIGN IN</Text>
+        <View style={styles.verticalContainer}>
+            <Text style={styles.header}>SIGN IN</Text>
 
+            <View style={styles.inputContainer}>
                 <Text>Email Address</Text>
                 <TextInput
                     style={styles.textInput}
@@ -61,18 +61,22 @@ const SignInScreen = () => {
                     keyboardType="email-address"
                     placeholder="email"
                 />
+            </View>
 
+            <View style={styles.inputContainer}>
                 <Text>Password</Text>
                 <TextInput
                     style={styles.textInput}
                     onChangeText={(value) => setSignInPassword(value)}
                     autoCapitalize="none"
                     autoCorrect={false}
-                    autoCompleteType="password" 
+                    autoCompleteType="password"
                     secureTextEntry={true}
                     placeholder="password"
                 />
+            </View>
 
+            <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button} title="SIGN IN" onPress={signInWithFirebase}>
                     <Text style={styles.buttonText}>SIGN IN</Text>
                 </TouchableOpacity>

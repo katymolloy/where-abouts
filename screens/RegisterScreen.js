@@ -58,7 +58,7 @@ const RegisterScreen = () => {
     }
 
 
-    
+
     const saveDataWithFirebase = (firstName, lastName, email) => {
         // saving to realtime db
         var user = auth.currentUser;
@@ -83,10 +83,10 @@ const RegisterScreen = () => {
 
 
     return (
-        <View style={styles.container}>
-            <View>
-                <Text style={styles.header}>REGISTER</Text>
+        <View style={styles.verticalContainer}>
+            <Text style={styles.header}>REGISTER</Text>
 
+            <View style={styles.inputContainer}>
                 <Text>First Name</Text>
                 <TextInput
                     style={styles.textInput}
@@ -95,7 +95,9 @@ const RegisterScreen = () => {
                     autoCorrect={false}
                     placeholder='first name'
                 />
+            </View>
 
+            <View style={styles.inputContainer}>
                 <Text>Last Name</Text>
                 <TextInput
                     style={styles.textInput}
@@ -104,7 +106,9 @@ const RegisterScreen = () => {
                     autoCorrect={false}
                     placeholder='last name'
                 />
+            </View>
 
+            <View style={styles.inputContainer}>
                 <Text>Email Address</Text>
                 <TextInput
                     style={styles.textInput}
@@ -115,7 +119,9 @@ const RegisterScreen = () => {
                     keyboardType="email-address"
                     placeholder='email'
                 />
+            </View>
 
+            <View style={styles.inputContainer}>
                 <Text>Password</Text>
                 <TextInput
                     style={styles.textInput}
@@ -125,14 +131,13 @@ const RegisterScreen = () => {
                     autoCompleteType="password" // Use autoCompleteType for password input
                     secureTextEntry={true}
                     placeholder="password"
-
                 />
+            </View>
 
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button} title="CREATE AN ACCOUNT" onPress={registerWithFirebase}>
-                        <Text style={styles.buttonText}>CREATE AN ACCOUNT</Text>
-                    </TouchableOpacity>
-                </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.button} title="CREATE AN ACCOUNT" onPress={registerWithFirebase}>
+                    <Text style={styles.buttonText}>CREATE AN ACCOUNT</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );

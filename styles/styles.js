@@ -2,58 +2,78 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
 
-    form : {
-        margin : 30,
-        marginTop : 60
+    form: {
+        margin: 30,
+        marginTop: 60
     },
 
-    textInput : {
+    textInput: {
         // justifyContent : 'center',
         // alignItems : 'center',
-        borderColor : '#000000',
-        borderWidth : 1,
-        borderRadius : 10,
-        width : 222,
-        height : 45,
+        borderColor: '#000000',
+        borderWidth: 1,
+        borderRadius: 50,
+        width: '100%',
+        height: 45,
         padding: 10
     },
 
     buttonContainer: {
-        // paddingVertical : 40,
-        justifyContent : 'center',
-        alignContent : 'center',
-        width : '100%',
+        width: '100%',
+        color: 'white',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'end',
+        paddingHorizontal: 40,
     },
-
+    inputContainer: {
+        paddingHorizontal: 40,
+        paddingVertical: 20,
+        width: '100%',
+    },
     button: {
-        // alignContent : 'center',
-        alignSelf : 'center',
-        margin : 5,
-        padding : 15,
-        // color : 'black',
-        backgroundColor : 'blue',
-        borderRadius : 10,
-        boxSizing : 'border-box',
-        border : 'none',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignContent: 'center',
+        alignSelf: 'center',
+        padding: 10,
+        width: '100%',
+        color: 'white',
+        backgroundColor: '#4592F6',
+        borderRadius: 50,
+        boxSizing: 'border-box',
+        border: 'none',
     },
 
     buttonText: {
-        fontSize : 14,
-        lineHeight : 20,
-        fontWeight : 'bold',
-        letterSpacing : 0.20,
-        color : '#FFF',
+        fontSize: 14,
+        lineHeight: 20,
+        fontWeight: 'bold',
+        letterSpacing: 0.20,
+        color: '#FFF',
+        paddingHorizontal: 20,
     },
-    header:{
+
+    //Font Awesome Icons
+    icon: {
+        color: 'white',
+        fontSize: '20',
+    },
+    header: {
         fontSize: 30,
         fontWeight: '500',
+        paddingVertical: 50,
 
     },
-    container: {
+    verticalContainer: {
         flex: 1,
+        width: '100%',
         backgroundColor: '#fff',
+        display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-      },
+    }
 
 });
