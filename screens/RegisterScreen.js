@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 
 
 import { db, auth } from '../firebaseConfig';
-// import { signInWithEmailAndPassword, signOut } from '/firebase/auth';
 import { createUserWithEmailAndPassword } from '../node_modules/firebase/auth';
 // import { onValue } from '../node_modules/firebase/database';
 import { ref, set } from '../node_modules/firebase/database';
@@ -22,6 +21,7 @@ const RegisterScreen = ({ navigation }) => {
     const [registrationPassword, setRegistrationPassword] = useState('');
 
 
+    // Handling the registration
     const registerHandler = () => {
         registerWithFirebase();
         navigation.navigate('Home')
@@ -40,15 +40,17 @@ const RegisterScreen = ({ navigation }) => {
             return;
         }
 
+        // Crafting the user with his/her email, password, and full name
         createUserWithEmailAndPassword(auth, registrationEmail, registrationPassword).then(() => {
             Alert.alert('User has been registered!');
-            saveDataWithFirebase(firstName, lastName, registrationEmail)
+            saveDataWithFirebase(firstName, lastName, registrationEmail);
 
-            // clearing the input fields
+            // Clearing the input fields
             setFirstName('');
-            setLastName('')
+            setLastName('');
             setRegistrationEmail('');
             setRegistrationPassword('');
+
         }).catch(function (err) {
             var errorCode = err.code;
             var errorMessage = err.message;
@@ -66,7 +68,8 @@ const RegisterScreen = ({ navigation }) => {
 
 
     const saveDataWithFirebase = (firstName, lastName, email) => {
-        // saving to realtime db
+
+        // Saving the user's data to realtime db (database)
         var user = auth.currentUser;
         if (user) {
             var uid = user.uid;
@@ -85,9 +88,11 @@ const RegisterScreen = ({ navigation }) => {
         } else {
             console.log('User not authenticated.')
         }
+
     }
 
 
+    // Returning the layout of the register screen
     return (
         <View style={styles.verticalContainer}>
             <Text style={styles.header}>REGISTER</Text>
@@ -99,7 +104,6 @@ const RegisterScreen = ({ navigation }) => {
                     onChangeText={(value) => setFirstName(value)}
                     autoCapitalize="none"
                     autoCorrect={false}
-                    placeholder='first name'
                 />
             </View>
 
@@ -110,7 +114,6 @@ const RegisterScreen = ({ navigation }) => {
                     onChangeText={(value) => setLastName(value)}
                     autoCapitalize="none"
                     autoCorrect={false}
-                    placeholder='last name'
                 />
             </View>
 
@@ -124,7 +127,6 @@ const RegisterScreen = ({ navigation }) => {
                     autoCorrect={false}
                     autoCompleteType="email"
                     keyboardType="email-address"
-                    placeholder='email'
                 />
             </View>
 
@@ -137,7 +139,6 @@ const RegisterScreen = ({ navigation }) => {
                     autoCorrect={false}
                     autoCompleteType="password" // Use autoCompleteType for password input
                     secureTextEntry={true}
-                    placeholder="password"
                 />
             </View>
 

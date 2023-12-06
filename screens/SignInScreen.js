@@ -2,10 +2,12 @@
 import { Text, View, Alert, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 
+
 import { db, auth } from '../firebaseConfig'
 import { signInWithEmailAndPassword, signOut } from '../node_modules/firebase/auth';
 import { onValue } from '../node_modules/firebase/database';
 import { ref, set } from '../node_modules/firebase/database';
+
 
 import { styles } from '../styles/styles';
 
@@ -17,19 +19,22 @@ const SignInScreen = ({ navigation }) => {
     const [signInEmail, setSignInEmail] = useState('');
     const [signInPassword, setSignInPassword] = useState('');
 
-    // handler function for sign in
+
+    // Handler function for sign in
     signInHandler = () => {
-        // user is signed in with firebase
+        // User is signed in with firebase
         signInWithFirebase()
 
-        // text fields are cleared
+        // Clearing the input fields
         setSignInEmail('')
         setSignInPassword('')
         setIsLoggedIn(true)
 
-        // users are navigated to the map screen
+        // The users are navigated to the map screen
         navigation.navigate('Map')
     }
+
+
 
     // Logging In With Firebase
     signInWithFirebase = () => {
@@ -43,6 +48,7 @@ const SignInScreen = ({ navigation }) => {
             return;
         }
 
+        // Signing in with the user's registered email and password
         signInWithEmailAndPassword(auth, signInEmail, signInPassword).then(() => {
             Alert.alert('You are now logged in!');
         }).catch(function (err) {
@@ -59,6 +65,7 @@ const SignInScreen = ({ navigation }) => {
     }
 
 
+    // Returning the layout of the sign in screen
     return (
         <View style={styles.verticalContainer}>
             <Text style={styles.header}>SIGN IN</Text>
@@ -72,7 +79,6 @@ const SignInScreen = ({ navigation }) => {
                     autoCorrect={false}
                     autoCompleteType="email"
                     keyboardType="email-address"
-                    placeholder="email"
                 />
             </View>
 
@@ -85,7 +91,6 @@ const SignInScreen = ({ navigation }) => {
                     autoCorrect={false}
                     autoCompleteType="password"
                     secureTextEntry={true}
-                    placeholder="password"
                 />
             </View>
 

@@ -25,12 +25,15 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'end',
         paddingHorizontal: 40,
+        paddingVertical: 10,
     },
+
     inputContainer: {
         paddingHorizontal: 40,
-        paddingVertical: 20,
+        paddingVertical: 10,
         width: '100%',
     },
+
     button: {
         display: 'flex',
         flexDirection: 'row',
@@ -60,12 +63,13 @@ export const styles = StyleSheet.create({
         color: 'white',
         fontSize: '20',
     },
+
     header: {
         fontSize: 30,
         fontWeight: '500',
         paddingVertical: 50,
-
     },
+
     verticalContainer: {
         flex: 1,
         width: '100%',

@@ -4,7 +4,7 @@ import { getDatabase } from 'firebase/database'
 import { getAuth } from 'firebase/auth'
 
 
-// Your web app's Firebase configuration
+// The application's Firebase configuration
 const firebaseConfig = {
 
   apiKey: "AIzaSyBpYJuE-_l7ZExvn0-ohvWMV-wHnVLWZmY",
