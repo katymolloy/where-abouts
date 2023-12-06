@@ -10,19 +10,26 @@ import { ref, set } from '../node_modules/firebase/database';
 import { styles } from '../styles/styles';
 
 
-const SignInScreen = () => {
+const SignInScreen = ({ navigation }) => {
 
     // Setting the hooks
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [signInEmail, setSignInEmail] = useState('');
     const [signInPassword, setSignInPassword] = useState('');
 
+    signInHandler = () => {
+        signInWithFirebase()
+        setIsLoggedIn(true)
+        navigation.navigate('Map')
+    }
 
     // Logging In With Firebase
     signInWithFirebase = () => {
 
         if (signInEmail.length < 4) {
             Alert.alert('Please enter a valid email address');
-            return;
+
+
         }
 
         if (signInPassword.length < 4) {
@@ -68,12 +75,12 @@ const SignInScreen = () => {
                     onChangeText={(value) => setSignInPassword(value)}
                     autoCapitalize="none"
                     autoCorrect={false}
-                    autoCompleteType="password" 
+                    autoCompleteType="password"
                     secureTextEntry={true}
                     placeholder="password"
                 />
 
-                <TouchableOpacity style={styles.button} title="SIGN IN" onPress={signInWithFirebase}>
+                <TouchableOpacity style={styles.button} title="SIGN IN" onPress={signInHandler}>
                     <Text style={styles.buttonText}>SIGN IN</Text>
                 </TouchableOpacity>
             </View>
