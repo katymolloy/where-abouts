@@ -12,7 +12,7 @@ import { ref, set } from '../node_modules/firebase/database';
 import { styles } from '../styles/styles';
 
 
-const RegisterScreen = ({ navigation }) => {
+const AddContact = ({ navigation }) => {
 
     // Setting the hooks 
     const [addPhoneNumber, setAddPhoneNumber] = useState('');
