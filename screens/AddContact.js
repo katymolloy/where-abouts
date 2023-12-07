@@ -127,4 +127,4 @@ const AddContact = ({ navigation }) => {
 
 }
 
-export default RegisterScreen;
+export default AddContact;
