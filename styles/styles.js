@@ -78,6 +78,25 @@ export const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-    }
+    },
+    loadingText:{
+        fontSize: 30,
+        flex: 1
+    },
+    // collapse portion
+    collapseMe: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: 10,
+        backgroundColor: 'white',
+      },
+      modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        height: '30%'
+      },
 
 });

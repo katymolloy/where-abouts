@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {  Text, View, Image, TouchableOpacity } from 'react-native';
 import { styles } from '../styles/styles';
 import { ScrollView } from 'react-native-gesture-handler';
 import MapView from 'react-native-maps';
 import * as Location from 'expo-location';
+
+
+import CollapseScroll from '../components/collapseScroll';
 
 export default function Map({ navigation }) {
     const [currentLocation, setCurrentLocation] = useState(null);
@@ -36,14 +39,17 @@ export default function Map({ navigation }) {
         <View style={styles.container}>
             {/* map view is only displayed if current location is set */}
             {currentLocation ?
-                <MapView style={{ alignSelf: 'stretch', height: '100%' }} initialRegion={currentLocation} showsUserLocation={true} />
+                <>
+                    <MapView style={{ alignSelf: 'stretch', height: '93%' }} initialRegion={currentLocation} showsUserLocation={true} />
+                    <CollapseScroll navigation={navigation} />
+                </>
                 :
                 <View>
-                    <Text>Loading...</Text>
+                    <Text style={styles.loadingText}>Loading...</Text>
                 </View>
             }
 
-            <ScrollView></ScrollView>
+
         </View>
     )
 

@@ -7,6 +7,8 @@ import Home from './screens/homeScreen';
 import SignInScreen from './screens/SignInScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import Map from './screens/mapScreen';
+import AddContact from './screens/AddContact'
+import CollapseScroll from './components/collapseScroll';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +21,8 @@ export default function App() {
           <Stack.Screen name='SignIn' component={SignInScreen} options={{ title: 'Sign In' }} />
           <Stack.Screen name='Register' component={RegisterScreen} options={{ title: 'Register' }} />
           <Stack.Screen name='Map' component={Map} />
+          <Stack.Screen name='AddContact' component={AddContact} />
+          <Stack.Screen name='CollapseScroll' component={CollapseScroll} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
