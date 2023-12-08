@@ -6,6 +6,8 @@ import { styles } from '../styles/styles';
 
 import { onValue } from 'firebase/database';
 
+import * as SMS from 'expo-sms';
+
 import { db, auth } from '../firebaseConfig';
 import { ref } from '../node_modules/firebase/database';
 
@@ -51,8 +53,28 @@ export default function CollapseScroll({ navigation }) {
   }
 
   // function to send SMS
-  const sendLocation = () => {
-    console.log('In here')
+  const sendLocation = async  () => {
+
+    var number = contact.phoneNumber;
+    var fullName = contact.firstName + ' ' + contact.lastName;
+    
+    const isAvailable = await SMS.isAvailableAsync()
+
+    if (isAvailable) {
+
+      const {result} = await SMS.sendSMSAsync(
+        [number],
+        fullName + ', ' + '\n' 
+      );
+
+      // Alert the user that the SMS has been sent, and therefore successful
+      Alert.alert('SMS Sent!', 'Your SMS has been sent successfully!')
+
+      // If the SMS was fatal, the program will alert the user with an error
+    } else {
+      Alert.alert('Error', 'Something went wrong. Please try again.');
+    }
+
   }
 
   const toggle = () => {
