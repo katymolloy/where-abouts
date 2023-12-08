@@ -32,16 +32,14 @@ const CollapseScroll = (props) => {
   const getUserFName = () => {
     const user = auth.currentUser
     // ensuring user is authenticated
-    onAuthStateChanged(auth, (user) => {
+   
       if (user) {
         const uid = user.uid;
         // try / catch block to get contact information
         try {
           onValue(ref(db, 'users/' + uid), (snapshot) => {
             if (snapshot.exists()) {
-
-              const userName = snapshot.val().firstName
-              setUserFirstName(userName)
+              setUserFirstName(snapshot.val().firstName)
               console.log(userFirstName)
 
             } else {
@@ -54,7 +52,7 @@ const CollapseScroll = (props) => {
       } else {
         console.log('User not found')
       }
-    })
+    
   }
 
   const getContacts = () => {
