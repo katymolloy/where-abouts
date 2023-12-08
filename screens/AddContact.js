@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 
 
 import { db, auth } from '../firebaseConfig';
-import { createUserWithEmailAndPassword } from '../node_modules/firebase/auth';
-// import { onValue } from '../node_modules/firebase/database';
 import { ref, set } from '../node_modules/firebase/database';
 
 
@@ -15,64 +13,44 @@ import { styles } from '../styles/styles';
 const AddContact = ({ navigation }) => {
 
     // Setting the hooks 
-    const [addPhoneNumber, setAddPhoneNumber] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
 
 
     // Handling the registration
     const registerHandler = () => {
-        registerWithFirebase();
+        saveContact(firstName, lastName, phoneNumber);
         navigation.navigate('Map')
     }
 
-    // Registering the phone number and name with Firebase
-    const registerWithFirebase = () => {
 
-        // Crafting the added user's phone number information and full name
-        auth()
-        .signInWithPhoneNumber(addPhoneNumber)
-        .then(() => {
-            Alert.alert('User has been registered!');
-            saveDataWithFirebase(firstName, lastName, addPhoneNumber);
-
-            // Clearing the input fields
-            setFirstName('');
-            setLastName('');
-            setAddPhoneNumber('');
-
-        }).catch(function (err) {
-            var errorCode = err.code;
-            var errorMessage = err.message;
-
-            Alert.alert(errorMessage);
-            console.log(err);
-        });
-
+    const generateUniqueID = () =>{
+       let randID =  Math.floor(Math.random() * 10000)
+       console.log(randID)
+return randID
     }
 
-
-
-    const saveDataWithFirebase = (firstName, lastName, phoneNumber) => {
-
-        // Saving the user's data to realtime db (database)
+    const saveContact = () => {
+        // Function ensures user is logged in and authenticated
         var user = auth.currentUser;
         if (user) {
             var uid = user.uid;
-
-            set(ref(db, 'users/' + uid), {
+            var contactID = generateUniqueID()
+            // new node for contacts is created if user exists 
+            set(ref(db, 'users/' + uid + '/contacts/' + contactID), {
                 firstName: firstName,
                 lastName: lastName,
                 phoneNumber: phoneNumber,
             }, { merge: false })
                 .then(() => {
-                    console.log('Data saved successfully')
+                    console.log('Contact saved successfully')
                 })
                 .catch(() => {
-                    console.log('Data not saved')
+                    console.log('Contact not saved')
                 })
         } else {
-            console.log('User not authenticated.')
+            console.log('User not found.')
         }
 
     }
@@ -108,7 +86,7 @@ const AddContact = ({ navigation }) => {
                 <Text>Phone Number</Text>
                 <TextInput
                     style={styles.textInput}
-                    onChangeText={(value) => setAddPhoneNumber(value)}
+                    onChangeText={(value) => setPhoneNumber(value)}
                     autoCapitalize="none"
                     autoCorrect={false}
                     autoCompleteType="tel"
