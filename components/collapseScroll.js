@@ -25,8 +25,8 @@ const CollapseScroll = (props) => {
 
   // useEffect is used to ensure contacts are updated on change
   useEffect(() => {
-    getContacts();
     getUserFName();
+    getContacts();
   }, [])
 
   const getUserFName = () => {
