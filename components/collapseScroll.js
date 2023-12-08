@@ -29,32 +29,6 @@ const CollapseScroll = (props) => {
     getContacts();
   }, [])
 
-  const getUserFName = () => {
-    const user = auth.currentUser
-    // ensuring user is authenticated
-
-    if (user) {
-      const uid = user.uid;
-      // try / catch block to get contact information
-      try {
-        onValue(ref(db, 'users/' + uid), (snapshot) => {
-          if (snapshot.exists()) {
-            const userFirstName = (snapshot.val().firstName)
-            return userFirstName;
-
-          } else {
-            console.log('No first name found')
-          }
-        })
-      } catch (error) {
-        console.log('Error retrieving user first name')
-      }
-    } else {
-      console.log('User not found')
-    }
-
-  }
-
   const getContacts = () => {
     const user = auth.currentUser
     // ensuring user is authenticated
@@ -90,16 +64,17 @@ const CollapseScroll = (props) => {
     console.log(location.latitude + ', ' + location.longitude)
     console.log(phone + ',' + recipientName)
 
-    var number = phone;
-    var name = recipientName;
+    var userNumber = phone;
+    var userName = recipientName;
+    var userLocation = location.latitude + ', ' + location.longitude;
 
     const isAvailable = await SMS.isAvailableAsync()
 
     if (isAvailable) {
 
       const { result } = await SMS.sendSMSAsync(
-        [number],
-        name + ', your help is needed! ' + '\n' + 'Location: ' + location.latitude + ', ' + location.longitude
+        [userNumber],
+        'Where Abouts' + '\n' + userName + ', your help is needed! ' + '\n' + 'Location: ' + userLocation
       );
 
       // Alert the user that the SMS has been sent, and therefore successful
