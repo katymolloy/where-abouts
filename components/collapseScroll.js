@@ -21,7 +21,7 @@ const CollapseScroll = (props) => {
   const { navigation, location } = props
   const [isVisible, setIsVisible] = useState(false);
   const [userContacts, setUserContacts] = useState([]);
-  const [userFirstName, setUserFirstName] = useState('')
+
 
   // useEffect is used to ensure contacts are updated on change
   useEffect(() => {
@@ -32,27 +32,27 @@ const CollapseScroll = (props) => {
   const getUserFName = () => {
     const user = auth.currentUser
     // ensuring user is authenticated
-   
-      if (user) {
-        const uid = user.uid;
-        // try / catch block to get contact information
-        try {
-          onValue(ref(db, 'users/' + uid), (snapshot) => {
-            if (snapshot.exists()) {
-              setUserFirstName(snapshot.val().firstName)
-              console.log(userFirstName)
 
-            } else {
-              console.log('No first name found')
-            }
-          })
-        } catch (error) {
-          console.log('Error retrieving user first name')
-        }
-      } else {
-        console.log('User not found')
+    if (user) {
+      const uid = user.uid;
+      // try / catch block to get contact information
+      try {
+        onValue(ref(db, 'users/' + uid), (snapshot) => {
+          if (snapshot.exists()) {
+            const userFirstName = (snapshot.val().firstName)
+            return userFirstName;
+
+          } else {
+            console.log('No first name found')
+          }
+        })
+      } catch (error) {
+        console.log('Error retrieving user first name')
       }
-    
+    } else {
+      console.log('User not found')
+    }
+
   }
 
   const getContacts = () => {
