@@ -79,6 +79,8 @@ const SignInScreen = ({ navigation }) => {
                     autoCorrect={false}
                     autoCompleteType="email"
                     keyboardType="email-address"
+                    //Default Value
+                    defaultValue="test@test.com"
                 />
             </View>
 
@@ -91,6 +93,8 @@ const SignInScreen = ({ navigation }) => {
                     autoCorrect={false}
                     autoCompleteType="password"
                     secureTextEntry={true}
+                    //Default Value
+                    defaultValue="1234567"
                 />
             </View>
 

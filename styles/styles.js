@@ -56,6 +56,7 @@ export const styles = StyleSheet.create({
         letterSpacing: 0.20,
         color: '#FFF',
         paddingHorizontal: 20,
+        fontFamily: 'Urbanist_700Bold',
     },
 
     //Font Awesome Icons
@@ -68,6 +69,7 @@ export const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: '500',
         paddingVertical: 50,
+        fontFamily: 'Urbanist_900Black_Italic',
     },
 
     verticalContainer: {
@@ -79,7 +81,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    loadingText:{
+    loadingText: {
         fontSize: 30,
         flex: 1
     },
@@ -88,15 +90,27 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        padding: 7,
+        paddingHorizontal: 15,
+        backgroundColor: 'white',
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+        elevation: 10,
+    },
+    modalContainer: {
+        height: '50%',
+        marginTop: 'auto',
+        backgroundColor: 'white',
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+        elevation: 10,
         padding: 10,
-        backgroundColor: 'white',
-      },
-      modalContainer: {
+    },
+    inline: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'white',
-        height: '30%'
-      },
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        margin: 5,
+    }
 
 });
