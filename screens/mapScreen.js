@@ -41,7 +41,7 @@ export default function Map({ navigation }) {
             {currentLocation ?
                 <>
                     <MapView style={{ alignSelf: 'stretch', height: '93%' }} initialRegion={currentLocation} showsUserLocation={true} />
-                    <CollapseScroll navigation={navigation} />
+                    <CollapseScroll navigation={navigation} location={currentLocation}/>
                 </>
                 :
                 <View>

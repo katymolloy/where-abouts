@@ -17,7 +17,8 @@ import { faShare } from '@fortawesome/free-solid-svg-icons/faShare'
 import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark'
 
 
-export default function CollapseScroll({ navigation }) {
+const CollapseScroll = (props) => {
+  const { navigation, location } = props
   const [isVisible, setIsVisible] = useState(false);
   const [userContacts, setUserContacts] = useState([])
 
@@ -59,26 +60,28 @@ export default function CollapseScroll({ navigation }) {
 
   // function to send SMS
   const sendLocation = async  () => {
+    console.log(location.latitude + ', ' + location.longitude)
+    console.log(this.phoneNumber)
 
-    var number = contact.phoneNumber;
-    var fullName = contact.firstName + ' ' + contact.lastName;
+    // var number = contact.phoneNumber;
+    // var fullName = contact.firstName + ' ' + contact.lastName;
     
-    const isAvailable = await SMS.isAvailableAsync()
+    // const isAvailable = await SMS.isAvailableAsync()
 
-    if (isAvailable) {
+    // if (isAvailable) {
 
-      const {result} = await SMS.sendSMSAsync(
-        [number],
-        fullName + ', ' + '\n' 
-      );
+    //   const {result} = await SMS.sendSMSAsync(
+    //     [number],
+    //     fullName + ', ' + '\n' 
+    //   );
 
-      // Alert the user that the SMS has been sent, and therefore successful
-      Alert.alert('SMS Sent!', 'Your SMS has been sent successfully!')
+    //   // Alert the user that the SMS has been sent, and therefore successful
+    //   Alert.alert('SMS Sent!', 'Your SMS has been sent successfully!')
 
-      // If the SMS was fatal, the program will alert the user with an error
-    } else {
-      Alert.alert('Error', 'Something went wrong. Please try again.');
-    }
+    //   // If the SMS was fatal, the program will alert the user with an error
+    // } else {
+    //   Alert.alert('Error', 'Something went wrong. Please try again.');
+    // }
 
   }
 
@@ -125,3 +128,5 @@ export default function CollapseScroll({ navigation }) {
     </View>
   );
 }
+
+export default CollapseScroll 
