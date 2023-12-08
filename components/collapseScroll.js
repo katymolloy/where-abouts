@@ -25,7 +25,6 @@ const CollapseScroll = (props) => {
 
   // useEffect is used to ensure contacts are updated on change
   useEffect(() => {
-    getUserFName();
     getContacts();
   }, [])
 
@@ -64,6 +63,7 @@ const CollapseScroll = (props) => {
     console.log(location.latitude + ', ' + location.longitude)
     console.log(phone + ',' + recipientName)
 
+    var whereAbouts = 'Where Abouts'
     var userNumber = phone;
     var userName = recipientName;
     var userLocation = location.latitude + ', ' + location.longitude;
@@ -74,7 +74,7 @@ const CollapseScroll = (props) => {
 
       const { result } = await SMS.sendSMSAsync(
         [userNumber],
-        'Where Abouts' + '\n' + userName + ', your help is needed! ' + '\n' + 'Location: ' + userLocation
+        whereAbouts + '\n' + userName + ', your help is needed! ' + '\n' + 'Location: ' + userLocation
       );
 
       // Alert the user that the SMS has been sent, and therefore successful
