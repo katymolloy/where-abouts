@@ -20,13 +20,42 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark'
 const CollapseScroll = (props) => {
   const { navigation, location } = props
   const [isVisible, setIsVisible] = useState(false);
-  const [userContacts, setUserContacts] = useState([])
+  const [userContacts, setUserContacts] = useState([]);
+  const [userFirstName, setUserFirstName] = useState('')
 
   // useEffect is used to ensure contacts are updated on change
   useEffect(() => {
     getContacts();
+    getUserFName();
   }, [])
 
+  const getUserFName = () => {
+    const user = auth.currentUser
+    // ensuring user is authenticated
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        // try / catch block to get contact information
+        try {
+          onValue(ref(db, 'users/' + uid), (snapshot) => {
+            if (snapshot.exists()) {
+
+              const userName = snapshot.val().firstName
+              setUserFirstName(userName)
+              console.log(userFirstName)
+
+            } else {
+              console.log('No first name found')
+            }
+          })
+        } catch (error) {
+          console.log('Error retrieving user first name')
+        }
+      } else {
+        console.log('User not found')
+      }
+    })
+  }
 
   const getContacts = () => {
     const user = auth.currentUser
@@ -59,29 +88,29 @@ const CollapseScroll = (props) => {
   }
 
   // function to send SMS
-  const sendLocation = async  (phone, recipientName) => {
+  const sendLocation = async (phone, recipientName) => {
     console.log(location.latitude + ', ' + location.longitude)
-    console.log(phone, recipientName)
+    console.log(phone + ',' + recipientName)
 
-    // var number = phone;
-    // var fullName = contact.firstName + ' ' + contact.lastName;
-    
-    // const isAvailable = await SMS.isAvailableAsync()
+    var number = phone;
+    var name = recipientName;
 
-    // if (isAvailable) {
+    const isAvailable = await SMS.isAvailableAsync()
 
-    //   const {result} = await SMS.sendSMSAsync(
-    //     [number],
-    //     fullName + ', ' + '\n' 
-    //   );
+    if (isAvailable) {
 
-    //   // Alert the user that the SMS has been sent, and therefore successful
-    //   Alert.alert('SMS Sent!', 'Your SMS has been sent successfully!')
+      const { result } = await SMS.sendSMSAsync(
+        [number],
+        name + ', ' + '\n' + location
+      );
 
-    //   // If the SMS was fatal, the program will alert the user with an error
-    // } else {
-    //   Alert.alert('Error', 'Something went wrong. Please try again.');
-    // }
+      // Alert the user that the SMS has been sent, and therefore successful
+      Alert.alert('SMS Sent!', 'Your SMS has been sent successfully!')
+
+      // If the SMS was fatal, the program will alert the user with an error
+    } else {
+      Alert.alert('Error', 'Something went wrong. Please try again.');
+    }
 
   }
 
