@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {  Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { styles } from '../styles/styles';
 import { ScrollView } from 'react-native-gesture-handler';
 import MapView from 'react-native-maps';

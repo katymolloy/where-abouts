@@ -58,40 +58,42 @@ const AddContact = ({ navigation }) => {
 
     // Returning the layout of the register screen
     return (
-        <View style={styles.verticalContainer}>
+        <View style={{ ...styles.verticalContainer, justifyContent: 'space-around' }}>
             <Text style={styles.header}>ADD CONTACT</Text>
 
-            <View style={styles.inputContainer}>
-                <Text>First Name</Text>
-                <TextInput
-                    style={styles.textInput}
-                    onChangeText={(value) => setFirstName(value)}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                />
-            </View>
+            <View style={{ width: '100%' }}>
+                <View style={styles.inputContainer}>
+                    <Text>First Name</Text>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={(value) => setFirstName(value)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                    />
+                </View>
 
-            <View style={styles.inputContainer}>
-                <Text>Last Name</Text>
-                <TextInput
-                    style={styles.textInput}
-                    onChangeText={(value) => setLastName(value)}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                />
-            </View>
+                <View style={styles.inputContainer}>
+                    <Text>Last Name</Text>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={(value) => setLastName(value)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                    />
+                </View>
 
 
-            <View style={styles.inputContainer}>
-                <Text>Phone Number</Text>
-                <TextInput
-                    style={styles.textInput}
-                    onChangeText={(value) => setPhoneNumber(value)}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    autoCompleteType="tel"
-                    keyboardType="phone-pad"
-                />
+                <View style={styles.inputContainer}>
+                    <Text>Phone Number</Text>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={(value) => setPhoneNumber(value)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        autoCompleteType="tel"
+                        keyboardType="phone-pad"
+                    />
+                </View>
             </View>
 
             <View style={styles.buttonContainer}>

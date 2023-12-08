@@ -10,6 +10,7 @@ import { ref, set } from '../node_modules/firebase/database';
 
 
 import { styles } from '../styles/styles';
+import { width } from '@fortawesome/free-solid-svg-icons/faPlus';
 
 
 const RegisterScreen = ({ navigation }) => {
@@ -94,52 +95,54 @@ const RegisterScreen = ({ navigation }) => {
 
     // Returning the layout of the register screen
     return (
-        <View style={styles.verticalContainer}>
+        <View style={{ ...styles.verticalContainer, justifyContent: 'space-around' }}>
             <Text style={styles.header}>REGISTER</Text>
 
-            <View style={styles.inputContainer}>
-                <Text>First Name</Text>
-                <TextInput
-                    style={styles.textInput}
-                    onChangeText={(value) => setFirstName(value)}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                />
-            </View>
+            <View style={{ width: '100%' }}>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.inputLabel}>First Name</Text>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={(value) => setFirstName(value)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                    />
+                </View>
 
-            <View style={styles.inputContainer}>
-                <Text>Last Name</Text>
-                <TextInput
-                    style={styles.textInput}
-                    onChangeText={(value) => setLastName(value)}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                />
-            </View>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.inputLabel}>Last Name</Text>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={(value) => setLastName(value)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                    />
+                </View>
 
 
-            <View style={styles.inputContainer}>
-                <Text>Email Address</Text>
-                <TextInput
-                    style={styles.textInput}
-                    onChangeText={(value) => setRegistrationEmail(value)}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    autoCompleteType="email"
-                    keyboardType="email-address"
-                />
-            </View>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.inputLabel}>Email Address</Text>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={(value) => setRegistrationEmail(value)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        autoCompleteType="email"
+                        keyboardType="email-address"
+                    />
+                </View>
 
-            <View style={styles.inputContainer}>
-                <Text>Password</Text>
-                <TextInput
-                    style={styles.textInput}
-                    onChangeText={(value) => setRegistrationPassword(value)}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    autoCompleteType="password" // Use autoCompleteType for password input
-                    secureTextEntry={true}
-                />
+                <View style={styles.inputContainer}>
+                    <Text style={styles.inputLabel}>Password</Text>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={(value) => setRegistrationPassword(value)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        autoCompleteType="password" // Use autoCompleteType for password input
+                        secureTextEntry={true}
+                    />
+                </View>
             </View>
 
             <View style={styles.buttonContainer}>

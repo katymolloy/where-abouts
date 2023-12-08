@@ -11,6 +11,11 @@ import * as SMS from 'expo-sms';
 import { db, auth } from '../firebaseConfig';
 import { ref } from '../node_modules/firebase/database';
 
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
+import { faShare } from '@fortawesome/free-solid-svg-icons/faShare'
+import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark'
+
 
 export default function CollapseScroll({ navigation }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -85,8 +90,7 @@ export default function CollapseScroll({ navigation }) {
     <View>
       <TouchableOpacity onPress={toggle} style={styles.collapseMe}>
         <Text style={{ fontSize: 22 }}>CONTACTS</Text>
-        {/* could replace with icon, look better */}
-        <Text style={{ fontSize: 30 }}>+</Text>
+        <FontAwesomeIcon style={{ color: '#4592F6' }} icon={faPlus} size={24} />
       </TouchableOpacity>
 
       <Modal animationType="slide" transparent={true} visible={isVisible}>
@@ -95,27 +99,27 @@ export default function CollapseScroll({ navigation }) {
           <View style={styles.inline}>
             <Text style={{ fontSize: 22 }}>CONTACTS</Text>
             <TouchableOpacity onPress={toggle}>
-              <Text>Close</Text>
+              <FontAwesomeIcon style={{ color: '#4592F6' }} icon={faXmark} size={24} />
             </TouchableOpacity>
           </View>
           <ScrollView style={styles.contactList}>
             {/* the returned contacts array is mapped and displayed */}
             {userContacts.map((contact, index) => (
               <View key={index}>
-                <TouchableOpacity onPress={sendLocation}>
-                  <Text>{contact.firstName} {contact.lastName}</Text>
-                  <Text>{contact.phoneNumber}</Text>
+                <TouchableOpacity style={{ ...styles.inline, alignItems: 'center' }} onPress={sendLocation}>
+                  <Text style={styles.listText}>{contact.firstName} {contact.lastName}</Text>
+                  <Text style={styles.listText}>{contact.phoneNumber}</Text>
+                  <FontAwesomeIcon style={{ color: '#4592F6' }} icon={faShare} size={24} />
                 </TouchableOpacity>
+                <View style={styles.line} />
               </View>
             ))}
           </ScrollView>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} title="add contact" onPress={() => navigation.navigate('Add Contact')}>
-              <Text style={styles.buttonText}>Add Contact</Text>
+            <TouchableOpacity style={styles.button} title="add contact" onPress={() => navigation.navigate('Add Contact', setIsVisible(!isVisible))}>
+              <Text style={styles.buttonText}>ADD CONTACT</Text>
             </TouchableOpacity>
           </View>
-
-
         </View>
       </Modal>
     </View>

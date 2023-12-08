@@ -10,12 +10,19 @@ export const styles = StyleSheet.create({
     textInput: {
         // justifyContent : 'center',
         // alignItems : 'center',
-        borderColor: '#000000',
+        borderColor: '#343434',
         borderWidth: 1,
         borderRadius: 50,
         width: '100%',
         height: 45,
-        padding: 10
+        padding: 10,
+        paddingHorizontal: 20,
+    },
+    inputLabel: {
+        marginVertical: 5,
+        fontFamily: 'Urbanist_500Medium',
+        fontSize: 16,
+        letterSpacing: 0.5,
     },
 
     buttonContainer: {
@@ -41,6 +48,7 @@ export const styles = StyleSheet.create({
         alignContent: 'center',
         alignSelf: 'center',
         padding: 10,
+        paddingVertical: 12,
         width: '100%',
         color: 'white',
         backgroundColor: '#4592F6',
@@ -66,10 +74,13 @@ export const styles = StyleSheet.create({
     },
 
     header: {
-        fontSize: 30,
-        fontWeight: '500',
-        paddingVertical: 50,
+        fontSize: 40,
+        paddingVertical: 20,
         fontFamily: 'Urbanist_900Black_Italic',
+    },
+    subHeader: {
+        fontSize: 16,
+        fontFamily: 'Urbanist_700Bold',
     },
 
     verticalContainer: {
@@ -95,7 +106,8 @@ export const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
-        elevation: 10,
+        elevation: 15,
+        margin: 0,
     },
     modalContainer: {
         height: '50%',
@@ -103,7 +115,7 @@ export const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
-        elevation: 10,
+        elevation: 15,
         padding: 10,
     },
     inline: {
@@ -111,6 +123,19 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         margin: 5,
+    },
+    listText: {
+        fontSize: 16,
+        fontFamily: 'Urbanist_500Medium',
+        textAlign: 'left',
+        paddingVertical: 10,
+    },
+    line: {
+        borderBottomWidth: 1,
+        borderBottomColor: '#eee',
+    },
+    contactList: {
+        marginVertical: 10,
     }
 
 });
