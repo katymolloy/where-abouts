@@ -25,10 +25,10 @@ const AddContact = ({ navigation }) => {
     }
 
 
-    const generateUniqueID = () =>{
-       let randID =  Math.floor(Math.random() * 10000)
-       console.log(randID)
-return randID
+    const generateUniqueID = () => {
+        // number between 1 and 10 000 000 used to create unique identifier
+        let randID = Math.floor(Math.random() * 1000000)
+        return randID
     }
 
     const saveContact = () => {
@@ -36,6 +36,7 @@ return randID
         var user = auth.currentUser;
         if (user) {
             var uid = user.uid;
+            // contact ID is created to ensure contacts don't overwrite each other.
             var contactID = generateUniqueID()
             // new node for contacts is created if user exists 
             set(ref(db, 'users/' + uid + '/contacts/' + contactID), {
@@ -52,7 +53,6 @@ return randID
         } else {
             console.log('User not found.')
         }
-
     }
 
 
