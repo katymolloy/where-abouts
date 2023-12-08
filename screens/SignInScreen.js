@@ -67,35 +67,33 @@ const SignInScreen = ({ navigation }) => {
 
     // Returning the layout of the sign in screen
     return (
-        <View style={styles.verticalContainer}>
+        <View style={{ ...styles.verticalContainer, justifyContent: 'space-around' }}>
             <Text style={styles.header}>SIGN IN</Text>
 
-            <View style={styles.inputContainer}>
-                <Text>Email Address</Text>
-                <TextInput
-                    style={styles.textInput}
-                    onChangeText={(value) => setSignInEmail(value)}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    autoCompleteType="email"
-                    keyboardType="email-address"
-                    //Default Value
-                    defaultValue="test@test.com"
-                />
-            </View>
+            <View style={{ width: '100%' }}>
+                <View style={styles.inputContainer}>
+                    <Text style={styles.inputLabel}>Email Address</Text>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={(value) => setSignInEmail(value)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        autoCompleteType="email"
+                        keyboardType="email-address"
+                    />
+                </View>
 
-            <View style={styles.inputContainer}>
-                <Text>Password</Text>
-                <TextInput
-                    style={styles.textInput}
-                    onChangeText={(value) => setSignInPassword(value)}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    autoCompleteType="password"
-                    secureTextEntry={true}
-                    //Default Value
-                    defaultValue="1234567"
-                />
+                <View style={styles.inputContainer}>
+                    <Text style={styles.inputLabel}>Password</Text>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={(value) => setSignInPassword(value)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        autoCompleteType="password"
+                        secureTextEntry={true}
+                    />
+                </View>
             </View>
 
             <View style={styles.buttonContainer}>
