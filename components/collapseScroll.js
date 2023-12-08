@@ -59,9 +59,9 @@ const CollapseScroll = (props) => {
   }
 
   // function to send SMS
-  const sendLocation = async  () => {
+  const sendLocation = async  (phone) => {
     console.log(location.latitude + ', ' + location.longitude)
-    console.log(this.phoneNumber)
+    console.log(phone)
 
     // var number = contact.phoneNumber;
     // var fullName = contact.firstName + ' ' + contact.lastName;
@@ -109,7 +109,7 @@ const CollapseScroll = (props) => {
             {/* the returned contacts array is mapped and displayed */}
             {userContacts.map((contact, index) => (
               <View key={index}>
-                <TouchableOpacity style={{ ...styles.inline, alignItems: 'center' }} onPress={sendLocation}>
+                <TouchableOpacity style={{ ...styles.inline, alignItems: 'center' }} onPress={() => sendLocation(contact.phoneNumber)}>
                   <Text style={styles.listText}>{contact.firstName} {contact.lastName}</Text>
                   <Text style={styles.listText}>{contact.phoneNumber}</Text>
                   <FontAwesomeIcon style={{ color: '#4592F6' }} icon={faShare} size={24} />
