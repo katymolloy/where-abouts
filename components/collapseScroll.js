@@ -99,7 +99,7 @@ const CollapseScroll = (props) => {
 
       const { result } = await SMS.sendSMSAsync(
         [number],
-        name + ', ' + '\n' + location
+        name + ', your help is needed! ' + '\n' + 'Location: ' + location.latitude + ', ' + location.longitude
       );
 
       // Alert the user that the SMS has been sent, and therefore successful
